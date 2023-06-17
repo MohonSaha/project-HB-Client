@@ -30,7 +30,7 @@ const DashBoard = () => {
                         {
                             isOwner ? <>
                                 <li><NavLink to='/dashboard/manageUsers'> <FaHome></FaHome>Manage Classes</NavLink></li>
-                                <li><NavLink to='/dashboard/allUsers'> <FaUsers></FaUsers>Manage Users</NavLink></li>
+                                <li><NavLink to='/dashboard/addHotel'> <FaUsers></FaUsers>Add Hotel</NavLink></li>
 
                             </> : <>
 

@@ -8,6 +8,7 @@ import SignUp from "../Pages/Authentication/SignUp/SignUp";
 import OwnerSignUp from "../Pages/Authentication/OwnerSignUp/OwnerSignUp";
 import DashBoard from "../layouts/Dashboard";
 import ManageUsers from "../Pages/Dashboard/Owners/ManageUsers/ManageUsers";
+import AddHotel from "../Pages/Dashboard/Owners/AddHotel/AddHotel";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
             },
+            {
+                path: 'addHotel',
+                element: <AddHotel></AddHotel>
+            }
         ]
     }
 ]);
