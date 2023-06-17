@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
 
 
@@ -10,27 +11,34 @@ const AddHotel = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
 
 
-        // const { name, price, seats, image } = data;
-        // const newClass = { name, price: parseFloat(price), seats: parseFloat(seats), image, InsName: user?.displayName, InsEmail: user?.email };
+        const { name, region, details, image } = data;
+        const newHotel = { name, region, details, image, ownerName: user?.displayName, ownerEmail: user?.email };
+        console.log(newHotel);
 
-        // console.log(newClass);
 
-        // axiosSecure.post('/classes', newClass)
-        //     .then(data => {
-        //         console.log('After posting new classes', data.data);
-        //         if (data.data.insertedId) {
-        //             Swal.fire({
-        //                 icon: 'success',
-        //                 title: 'Successfully Added',
-        //                 showConfirmButton: false,
-        //                 timer: 1500
-        //             })
-        //             reset();
-        //         }
-        //     })
+        fetch('http://localhost:5000/addHotels', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newHotel)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data?.insertedId) {
+                    Swal.fire(
+                        'Good job!',
+                        'Successfully added new product.',
+                        'success'
+                    )
+
+                }
+                // form.reset()
+            })
+            .catch(err => console.log(err))
     }
 
 
