@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import useOwner from "../../../hooks/UseOwner";
 
 
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
     console.log(user);
+    const [isOwner] = useOwner();
 
 
     const navItems = <>
         <Link to='/'>Home</Link>
         <Link to='/allToys'>All Toys</Link>
         {
-            user && <Link to='/dashboard'>Dashboard</Link>
+            user && <Link to={isOwner ? '/dashboard/manageUsers' : '/dashboard/myBookings'}>Dashboard</Link>
         }
         <Link to='/blogs'>Blogs</Link>
     </>
+
 
 
     const handelLogout = () => {
@@ -58,7 +61,7 @@ const Navbar = () => {
                                         <summary>
                                             Create Account
                                         </summary>
-                                        <ul className="p-2 bg-base-100">
+                                        <ul className="p-2 bg-base-100 relative z-10">
                                             <li><Link to='/singup'>Traveller</Link></li>
                                             <li><Link to='/ownerSignup'>Hotel Owner</Link></li>
                                         </ul>

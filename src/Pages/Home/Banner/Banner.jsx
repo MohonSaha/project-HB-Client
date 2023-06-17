@@ -4,6 +4,9 @@ import img2 from '../../../assets/image/Banner/slide2.jpg'
 import img3 from '../../../assets/image/Banner/slide3.jpg'
 
 const Banner = () => {
+
+
+
     return (
         <div className='relative'>
             <div className="carousel h-[600px] md:h-[700px]">
