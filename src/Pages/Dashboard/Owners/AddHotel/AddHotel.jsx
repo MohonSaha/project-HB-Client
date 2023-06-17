@@ -1,14 +1,13 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
-// import Swal from "sweetalert2";
 
 
 const AddHotel = () => {
 
     const { user } = useAuth();
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
 
