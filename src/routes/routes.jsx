@@ -10,6 +10,7 @@ import DashBoard from "../layouts/Dashboard";
 import ManageUsers from "../Pages/Dashboard/Owners/ManageUsers/ManageUsers";
 import AddHotel from "../Pages/Dashboard/Owners/AddHotel/AddHotel";
 import MyHotels from "../Pages/Dashboard/Owners/MyHotels/MyHotels";
+import AddRooms from "../Pages/Dashboard/Owners/AddRooms/AddRooms";
 
 const router = createBrowserRouter([
     {
@@ -46,10 +47,15 @@ const router = createBrowserRouter([
             {
                 path: 'addHotel',
                 element: <AddHotel></AddHotel>
-            }, 
+            },
             {
                 path: 'myHotels',
                 element: <MyHotels></MyHotels>
+            },
+            {
+                path: 'myHotels/addRoom',
+                element: <AddRooms></AddRooms>
+
             }
         ]
     }

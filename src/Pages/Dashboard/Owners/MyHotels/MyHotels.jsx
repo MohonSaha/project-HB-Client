@@ -59,7 +59,10 @@ const MyHotels = () => {
                                     </Link>
 
                                 </td>
-                                <td><button className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaPlus></FaPlus></button></td>
+                                <td>
+                                    <Link state={{ state: item }} to={`/dashboard/myhotels/addRoom`}> <button className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaPlus></FaPlus></button>
+                                    </Link>
+                                </td>
                             </tr>)
                         }
 
