@@ -5,6 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Authentication/Login/Login";
 import SignUp from "../Pages/Authentication/SignUp/SignUp";
+import OwnerSignUp from "../Pages/Authentication/OwnerSignUp/OwnerSignUp";
 
 const router = createBrowserRouter([
     {
@@ -21,8 +22,12 @@ const router = createBrowserRouter([
                 element: <Login></Login>
             },
             {
-                path: 'signup',
+                path: 'singup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: 'ownerSignup',
+                element: <OwnerSignUp></OwnerSignUp>
             }
         ]
     }

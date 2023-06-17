@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 // import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import { useState } from "react";
@@ -105,7 +105,6 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>
-                            <h3>New to Beat StellarStay? <span><Link to="/signup">Sign Up</Link></span></h3>
 
                             {/* <SocialLogin></SocialLogin> */}
                         </form>

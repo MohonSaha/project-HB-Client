@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 
 const Navbar = () => {
+
+    const { user } = useAuth();
 
 
     const navItems = <>
         <Link to='/'>Home</Link>
         <Link to='/allToys'>All Toys</Link>
+        {
+            user && <Link to='/dashboard'>Dashboard</Link>
+        }
         <Link to='/blogs'>Blogs</Link>
     </>
 
@@ -33,9 +39,28 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
 
-                    <Link to='/login'>Login</Link>
+                    
+                         
+                            <Link to='/login'>Log Out</Link>
+                        
+                            <Link to='/login'>Log In</Link>
+                            <ul className="menu menu-horizontal px-1">
+                                <li>
+                                    <details>
+                                        <summary>
+                                            Create Account
+                                        </summary>
+                                        <ul className="p-2 bg-base-100">
+                                            <li><Link to='/singup'>Traveller</Link></li>
+                                            <li><Link to='/ownerSignup'>Hotel Owner</Link></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                            </ul>
+                        
+                    
+
                 </div>
             </div>
         </div>
