@@ -46,7 +46,7 @@ const OwnerSignUp = () => {
                                     reset()
                                     Swal.fire({
                                         icon: 'success',
-                                        title: 'User Created Successfully',
+                                        title: 'Owner Created Successfully',
                                         showConfirmButton: false,
                                         timer: 1500
                                     })

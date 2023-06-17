@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaPhotoVideo, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
 // import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import { useRef } from "react";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
@@ -29,27 +29,27 @@ const SignUp = () => {
 
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        // const savedUser = { name: data.name, email: data.email, image: data.photo }
+                        const savedUser = { name: data.name, email: data.email, image: data.photo }
 
-                        // fetch('https://beat-masters-server.vercel.app/users', {
-                        //     method: "POST",
-                        //     headers: {
-                        //         'content-type': 'application/json'
-                        //     },
-                        //     body: JSON.stringify(savedUser)
-                        // })
-                        //     .then(res => res.json())
-                        //     .then(data => {
-                        //         if (data.insertedId) {
-                        //             reset()
-                        //             Swal.fire({
-                        //                 icon: 'success',
-                        //                 title: 'User Created Successfully',
-                        //                 showConfirmButton: false,
-                        //                 timer: 1500
-                        //             })
-                        //         }
-                        //     })
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(savedUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'User Created Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                            })
 
 
                         logOut()

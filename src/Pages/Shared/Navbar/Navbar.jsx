@@ -4,7 +4,8 @@ import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
 
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
+    console.log(user);
 
 
     const navItems = <>
@@ -15,6 +16,13 @@ const Navbar = () => {
         }
         <Link to='/blogs'>Blogs</Link>
     </>
+
+
+    const handelLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
 
 
 
@@ -40,10 +48,11 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
 
-                    
-                         
-                            <Link to='/login'>Log Out</Link>
-                        
+                    {
+                        user ? <>
+                            <button onClick={() => handelLogout()}>Log Out</button>
+                        </> : <>
+
                             <Link to='/login'>Log In</Link>
                             <ul className="menu menu-horizontal px-1">
                                 <li>
@@ -58,8 +67,15 @@ const Navbar = () => {
                                     </details>
                                 </li>
                             </ul>
-                        
-                    
+
+                        </>
+                    }
+
+
+
+
+
+
 
                 </div>
             </div>
