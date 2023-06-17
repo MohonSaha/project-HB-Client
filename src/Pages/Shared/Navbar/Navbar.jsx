@@ -25,8 +25,6 @@ const Navbar = () => {
     }
 
 
-
-
     return (
         <div className='max-w-[1150px] mx-auto'>
             <div className="navbar bg-base-100">
