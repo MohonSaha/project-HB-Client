@@ -20,11 +20,3 @@ const useOwner = () => {
 export default useOwner;
 
 
-
-// const { data: approvesClasses = [], } = useQuery({
-//     queryKey: ['menu'],
-//     queryFn: async () => {
-//         const res = await fetch('https://beat-masters-server.vercel.app/classes/approved')
-//         return res.json()
-//     }
-// })

@@ -54,7 +54,7 @@ const MyHotels = () => {
                                 </td>
                                 <td>{item.name}</td>
                                 <td>
-                                    <Link state={{ state: item }} to={`/dashboard/myClasses/update`}>
+                                    <Link state={{ state: item }} to={'/'}>
                                         <button className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaEdit></FaEdit></button>
                                     </Link>
 

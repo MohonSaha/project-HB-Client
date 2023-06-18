@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+
 import useRooms from "../../../../hooks/useRooms";
-import { FaEdit, FaPlus } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 
 
 const ManageRooms = () => {
@@ -50,7 +50,6 @@ const ManageRooms = () => {
                                 <td className="text-right font-bold">${item.price}</td>
                                 <td>{item.ownerEmail}</td>
                                 <td>
-                                    {/* <Link state={{ state: item }} to={`/dashboard/myClasses/update`}> */}
                                     <button onClick={() => window.my_modal_3.showModal(item)} className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaEdit></FaEdit></button>
                                     {/* </Link> */}
 

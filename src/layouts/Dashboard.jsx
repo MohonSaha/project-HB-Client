@@ -1,4 +1,4 @@
-import { FaCalendar, FaHome, FaShoppingCart, FaUsers, FaWallet } from "react-icons/fa";
+import { FaHome, FaShoppingCart, FaUsers, FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useOwner from "../hooks/UseOwner";
 import useBooking from "../hooks/useBooking";
@@ -31,7 +31,7 @@ const DashBoard = () => {
                         <li className="text-3xl mb-16 tracking-wides font-bold text-white">Dashboard : {isOwner ? 'Owner' : 'Traveller'}</li>
                         {
                             isOwner?.owner ? <>
-                                <li><NavLink to='/dashboard/manageUsers'> <FaHome></FaHome>Manage Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/manageUsers'> <FaHome></FaHome>Manage Users</NavLink></li>
                                 <li><NavLink to='/dashboard/addHotel'> <FaUsers></FaUsers>Add Hotel</NavLink></li>
                                 <li><NavLink to='/dashboard/myHotels'> <FaUsers></FaUsers>My Hotels</NavLink></li>
                                 <li><NavLink to='/dashboard/manageRooms'> <FaUsers></FaUsers>Manage Rooms</NavLink></li>
@@ -41,7 +41,6 @@ const DashBoard = () => {
                                 <li><NavLink to='dashboard/myBookings'><FaShoppingCart></FaShoppingCart> Selected Rooms
                                     <span className="badge badge-secondary  bg-[#0C4B65] text-white border-white">+{bookedRoom?.length || 0}</span>
                                 </NavLink></li>
-                                <li><NavLink to='/dashboard/enrollClasses'> <FaCalendar></FaCalendar> Enrolled Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/history'> <FaWallet></FaWallet> Payment History</NavLink></li>
                             </>
                         }
@@ -49,8 +48,6 @@ const DashBoard = () => {
                         <hr className="mt-6" />
 
                         <li><NavLink to='/'><FaHome></FaHome> Home </NavLink></li>
-                        <li><NavLink to='/classes'><FaHome></FaHome> Classes</NavLink></li>
-                        <li><NavLink to='/instructors'><FaHome></FaHome> Instructors</NavLink></li>
                     </ul>
 
                 </div>
