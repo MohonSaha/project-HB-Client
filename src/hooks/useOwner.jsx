@@ -12,7 +12,7 @@ const useOwner = () => {
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users/owner/${user?.email}`)
             console.log('is owner response', res)
-            return res.json()
+            return res.json();
         }
     })
     return [isOwner, isOwnerLoading]

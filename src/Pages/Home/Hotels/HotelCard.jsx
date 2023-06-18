@@ -1,9 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const HotelCard = ({ hotel }) => {
 
     const { name, image, location, details, _id } = hotel;
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
     const { data: rooms = [] } = useQuery({
         queryKey: ['rooms'],
@@ -14,6 +19,50 @@ const HotelCard = ({ hotel }) => {
             return res.json()
         }
     })
+
+
+
+    const handleReserve = (room) => {
+        console.log(room);
+        if (user && user.email) {
+            const cartItem = { hotelId: _id, roomId: room._id, type: room.type, price: room.price, ownerEmail: room.ownerEmail, email: user.email };
+
+            fetch('http://localhost:5000/booked', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(cartItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        // refetch();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Class Added to the cart',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        }
+
+        else {
+            Swal.fire({
+                title: 'Please login to enroll class!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/login", { state: { from: location } })
+                }
+            })
+        }
+    }
 
     return (
         <div>
@@ -30,7 +79,7 @@ const HotelCard = ({ hotel }) => {
                                 <p>{room.roomDetails}</p>
                                 <p>Max People: {room.people}</p>
                                 <p>${room.price}</p>
-                                <button className="btn btn-sm mt-4 btn-primary">Reserve</button>
+                                <button onClick={() => handleReserve(room)} className="btn btn-sm mt-4 btn-primary">Reserve</button>
                             </div>)
                         }
                     </div>

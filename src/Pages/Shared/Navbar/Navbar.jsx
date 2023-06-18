@@ -8,13 +8,14 @@ const Navbar = () => {
     const { user, logOut } = useAuth();
     console.log(user);
     const [isOwner] = useOwner();
+    console.log(isOwner);
 
 
     const navItems = <>
         <Link to='/'>Home</Link>
         <Link to='/allToys'>All Toys</Link>
         {
-            user && <Link to={isOwner ? '/dashboard/manageUsers' : '/dashboard/myBookings'}>Dashboard</Link>
+            user &&  <Link to={isOwner?.owner ? '/dashboard/manageUsers' : '/dashboard/myBookings'}>Dashboard</Link>
         }
         <Link to='/blogs'>Blogs</Link>
     </>
