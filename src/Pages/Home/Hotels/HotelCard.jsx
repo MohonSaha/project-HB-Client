@@ -25,7 +25,7 @@ const HotelCard = ({ hotel }) => {
     const handleReserve = (room) => {
         console.log(room);
         if (user && user.email) {
-            const cartItem = { hotelId: _id, roomId: room._id, type: room.type, price: room.price, ownerEmail: room.ownerEmail, email: user.email };
+            const cartItem = { hotelId: _id, roomId: room._id, type: room.type, price: room.price, ownerEmail: room.ownerEmail, email: user.email, hotelImage: image};
 
             fetch('http://localhost:5000/booked', {
                 method: 'POST',
@@ -67,8 +67,8 @@ const HotelCard = ({ hotel }) => {
     return (
         <div>
 
-            {/* 
-            <button className="btn" onClick={() => window.my_modal_3.showModal()}>open modal</button> */}
+            {/* Hotel Room Modal  */}
+
             <dialog id="my_modal_3" className="modal">
                 <form method="dialog" className="modal-box">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -87,6 +87,7 @@ const HotelCard = ({ hotel }) => {
             </dialog>
 
 
+            {/* Hotel card  */}
 
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>

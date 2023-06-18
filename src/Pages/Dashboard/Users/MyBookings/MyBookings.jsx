@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useBooking from "../../../../hooks/useBooking";
-import { FaEdit, FaPlus } from "react-icons/fa";
+import { FaMoneyCheckAlt, FaTrash } from "react-icons/fa";
 
 
 const MyBookings = () => {
@@ -18,9 +18,9 @@ const MyBookings = () => {
                         <tr>
                             <th>#</th>
                             <th>Hotel</th>
-                            <th>Name</th>
-                            <th>Update</th>
-                            <th>Add Rooms</th>
+                            <th>Room</th>
+                            <th>Delete</th>
+                            <th>Payment</th>
 
                         </tr>
                     </thead>
@@ -32,7 +32,7 @@ const MyBookings = () => {
                                     <div className=" flex-col items-center">
                                         <div className="avatar">
                                             <div className="rounded-lg w-28 h-16">
-                                                <img className="w-28 h-16" src={item.image} alt="Avatar Tailwind CSS Component" />
+                                                <img className="w-28 h-16" src={item.hotelImage} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <p></p>
@@ -41,12 +41,12 @@ const MyBookings = () => {
                                 <td>{item.name}</td>
                                 <td>
                                     <Link state={{ state: item }} to={`/dashboard/myClasses/update`}>
-                                        <button className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaEdit></FaEdit></button>
+                                        <button className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaTrash></FaTrash></button>
                                     </Link>
 
                                 </td>
                                 <td>
-                                    <Link state={{ state: item }} to={`/dashboard/myhotels/addRoom`}> <button className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaPlus></FaPlus></button>
+                                    <Link state={{ state: item }} to={`/dashboard/myhotels/addRoom`}> <button className="btn btn-square hover:text-white hover:bg-[#0C4B65] bg-[#0C4B65] btn-circle text-white hover:transform hover:scale-110"><FaMoneyCheckAlt></FaMoneyCheckAlt></button>
                                     </Link>
                                 </td>
                             </tr>)

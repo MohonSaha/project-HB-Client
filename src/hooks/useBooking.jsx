@@ -6,7 +6,7 @@ const useBooking = () => {
     const { user, loading } = useAuth();
 
     const { data: bookedRoom = [], refetch } = useQuery({
-        queryKey: ['paidClasses', user?.email],
+        queryKey: ['bookedRoom', user?.email],
 
         enabled: !loading && !!user?.email,
 
