@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
 // import Swal from "sweetalert2";
 import { useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const AddRooms = () => {
@@ -16,39 +17,39 @@ const AddRooms = () => {
     const onSubmit = data => {
 
 
-        const { name, region, details, image } = data;
-        const newHotel = { name, region, details, image, ownerName: user?.displayName, ownerEmail: user?.email };
-        console.log(newHotel);
+        const { price, people, roomDetails, image, type,   } = data;
+        const newRoom = { type, people,price, roomDetails, image, hotelName: hotelInfo?.name, hotelId: hotelInfo._id, ownerEmail: user?.email };
+        console.log(newRoom);
 
 
-        // fetch('http://localhost:5000/addHotels', {
-        //     method: "POST",
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newHotel)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data?.insertedId) {
-        //             Swal.fire(
-        //                 'Good job!',
-        //                 'Successfully added new product.',
-        //                 'success'
-        //             )
+        fetch(`http://localhost:5000/addRooms/${hotelInfo._id}`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newRoom)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data?.insertedId) {
+                    Swal.fire(
+                        'Good job!',
+                        'Successfully added new room.',
+                        'success'
+                    )
 
-        //         }
-        //         // form.reset()
-        //     })
-        //     .catch(err => console.log(err))
+                }
+                // form.reset()
+            })
+            .catch(err => console.log(err))
     }
 
 
 
     return (
         <div className="w-full px-14">
-            <h2 className="text-[#BE4C23] mb-16 text-2xl font-bold text-center">Add New Class</h2>
+            <h2 className="text-[#BE4C23] mb-16 text-2xl font-bold text-center">Add New Room</h2>
 
 
             <form onSubmit={handleSubmit(onSubmit)} className="bg-slate-300 p-6 rounded-md">
