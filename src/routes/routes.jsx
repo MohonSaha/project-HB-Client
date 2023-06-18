@@ -13,6 +13,7 @@ import MyHotels from "../Pages/Dashboard/Owners/MyHotels/MyHotels";
 import AddRooms from "../Pages/Dashboard/Owners/AddRooms/AddRooms";
 import MyBookings from "../Pages/Dashboard/Users/MyBookings/MyBookings";
 import ManageRooms from "../Pages/Dashboard/Owners/ManageRooms/ManageRooms";
+import SearchHotel from "../Pages/SearchHotel/SearchHotel";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: 'ownerSignup',
                 element: <OwnerSignUp></OwnerSignUp>
+            }, 
+            {
+                path: 'searchHotel',
+                element: <SearchHotel></SearchHotel>
             }
         ]
     },
