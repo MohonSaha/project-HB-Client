@@ -35,7 +35,7 @@ const DashBoard = () => {
 
                             </> : <>
 
-                                <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart> Selected Classes
+                                <li><NavLink to='dashboard/myBookings'><FaShoppingCart></FaShoppingCart> Selected Classes
                                     {/* <span className="badge badge-secondary  bg-[#0C4B65] text-white border-white">+{cart?.length || 0}</span> */}
                                 </NavLink></li>
                                 <li><NavLink to='/dashboard/enrollClasses'> <FaCalendar></FaCalendar> Enrolled Classes</NavLink></li>

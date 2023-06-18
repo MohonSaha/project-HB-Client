@@ -11,6 +11,7 @@ import ManageUsers from "../Pages/Dashboard/Owners/ManageUsers/ManageUsers";
 import AddHotel from "../Pages/Dashboard/Owners/AddHotel/AddHotel";
 import MyHotels from "../Pages/Dashboard/Owners/MyHotels/MyHotels";
 import AddRooms from "../Pages/Dashboard/Owners/AddRooms/AddRooms";
+import MyBookings from "../Pages/Dashboard/Users/MyBookings/MyBookings";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
                 path: 'myHotels/addRoom',
                 element: <AddRooms></AddRooms>
 
+            }, 
+            {
+                path: 'myBookings',
+                element: <MyBookings></MyBookings>
             }
         ]
     }
