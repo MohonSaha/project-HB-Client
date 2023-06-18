@@ -1,12 +1,14 @@
 import { FaCalendar, FaHome, FaShoppingCart, FaUsers, FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useOwner from "../hooks/UseOwner";
+import useBooking from "../hooks/useBooking";
 
 
 const DashBoard = () => {
 
 
     const [isOwner] = useOwner();
+    const [bookedRoom] = useBooking();
 
 
 
@@ -28,15 +30,15 @@ const DashBoard = () => {
                     <ul className="menu p-4 min-h-screen w-80 text-base-content bg-[#0C4B65] pt-16">
                         <li className="text-3xl mb-16 tracking-wides font-bold text-white">Dashboard : {isOwner ? 'Owner' : 'Traveller'}</li>
                         {
-                            isOwner ? <>
+                            isOwner?.owner ? <>
                                 <li><NavLink to='/dashboard/manageUsers'> <FaHome></FaHome>Manage Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/addHotel'> <FaUsers></FaUsers>Add Hotel</NavLink></li>
                                 <li><NavLink to='/dashboard/myHotels'> <FaUsers></FaUsers>My Hotels</NavLink></li>
 
                             </> : <>
 
-                                <li><NavLink to='dashboard/myBookings'><FaShoppingCart></FaShoppingCart> Selected Classes
-                                    {/* <span className="badge badge-secondary  bg-[#0C4B65] text-white border-white">+{cart?.length || 0}</span> */}
+                                <li><NavLink to='dashboard/myBookings'><FaShoppingCart></FaShoppingCart> Selected Rooms
+                                    <span className="badge badge-secondary  bg-[#0C4B65] text-white border-white">+{bookedRoom?.length || 0}</span>
                                 </NavLink></li>
                                 <li><NavLink to='/dashboard/enrollClasses'> <FaCalendar></FaCalendar> Enrolled Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/history'> <FaWallet></FaWallet> Payment History</NavLink></li>
