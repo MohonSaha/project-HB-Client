@@ -25,7 +25,7 @@ const HotelCard = ({ hotel }) => {
     const handleReserve = (room) => {
         console.log(room);
         if (user && user.email) {
-            const cartItem = { hotelId: _id, roomId: room._id, type: room.type, price: room.price, ownerEmail: room.ownerEmail, email: user.email, hotelImage: image};
+            const cartItem = { hotelId: _id, roomId: room._id, type: room.type, price: room.price, ownerEmail: room.ownerEmail, email: user.email, hotelImage: image,hotelName: name, roomImage: room.image};
 
             fetch('http://localhost:5000/booked', {
                 method: 'POST',

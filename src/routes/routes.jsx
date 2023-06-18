@@ -12,6 +12,7 @@ import AddHotel from "../Pages/Dashboard/Owners/AddHotel/AddHotel";
 import MyHotels from "../Pages/Dashboard/Owners/MyHotels/MyHotels";
 import AddRooms from "../Pages/Dashboard/Owners/AddRooms/AddRooms";
 import MyBookings from "../Pages/Dashboard/Users/MyBookings/MyBookings";
+import ManageRooms from "../Pages/Dashboard/Owners/ManageRooms/ManageRooms";
 
 const router = createBrowserRouter([
     {
@@ -57,7 +58,11 @@ const router = createBrowserRouter([
                 path: 'myHotels/addRoom',
                 element: <AddRooms></AddRooms>
 
-            }, 
+            },
+            {
+                path: 'manageRooms',
+                element: <ManageRooms></ManageRooms>
+            },
             {
                 path: 'myBookings',
                 element: <MyBookings></MyBookings>
