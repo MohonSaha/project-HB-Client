@@ -8,7 +8,7 @@ import Modal from "../../../components/Modal";
 
 const HotelCard = ({ hotel }) => {
 
-    const { name, image, location, details, _id } = hotel;
+    const { name, image, location, details, _id, region } = hotel;
     const { user } = useAuth();
     const navigate = useNavigate();
 
@@ -87,11 +87,12 @@ const HotelCard = ({ hotel }) => {
 
             {/* Hotel card  */}
 
-            <div className="card w-96 h-[500px] bg-base-100 shadow-xl">
+            <div className="card w-96 h-[540px] bg-base-100 shadow-xl">
                 <figure className="h-[280px]"><img className="h-[280px]" src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
                     <p>{details}</p>
+                    <p>Region: {region}</p>
                     <div className="card-actions justify-end">
 
                         <button className="btn btn-primary" onClick={() => handleOpenModal(_id)}>View Rooms</button>
