@@ -19,9 +19,9 @@ const Hotels = () => {
 
     return (
         <div className="max-w-[1230px] mx-auto">
-            <h2>Hotels Section</h2>
+            <h2 className="text-center my-10 text-5xl">Hotels Section</h2>
 
-            <div className="">
+            <div className="grid grid-cols-3 gap-10">
                 {
                     hotels.map(hotel => <HotelCard key={hotel._id} hotel={hotel}></HotelCard>)
                 }

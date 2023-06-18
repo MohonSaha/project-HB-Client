@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Modal from "../../../components/Modal";
 
 
 const HotelCard = ({ hotel }) => {
@@ -10,22 +12,26 @@ const HotelCard = ({ hotel }) => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    const { data: rooms = [] } = useQuery({
-        queryKey: ['rooms'],
 
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/rooms/${_id}`)
-            console.log('is rooms response', res)
-            return res.json()
-        }
-    })
 
+    const [showModal, setShowModal] = useState(false);
+    const [selectedId, setSelectedId] = useState(null);
+
+    const handleOpenModal = (id) => {
+        setSelectedId(id);
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setSelectedId(null);
+    };
 
 
     const handleReserve = (room) => {
         console.log(room);
         if (user && user.email) {
-            const cartItem = { hotelId: _id, roomId: room._id, type: room.type, price: room.price, ownerEmail: room.ownerEmail, email: user.email, hotelImage: image,hotelName: name, roomImage: room.image};
+            const cartItem = { hotelId: _id, roomId: room._id, type: room.type, price: room.price, ownerEmail: room.ownerEmail, email: user.email, hotelImage: image, hotelName: name, roomImage: room.image };
 
             fetch('http://localhost:5000/booked', {
                 method: 'POST',
@@ -64,41 +70,39 @@ const HotelCard = ({ hotel }) => {
         }
     }
 
+
     return (
         <div>
 
-            {/* Hotel Room Modal  */}
 
-            <dialog id="my_modal_3" className="modal">
-                <form method="dialog" className="modal-box">
-                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    <div className="space-y-10">
-                        {
-                            rooms.map(room => <div key={room._id}>
-                                <h2 className="text-xl font-bold">{room.type}</h2>
-                                <p>{room.roomDetails}</p>
-                                <p>Max People: {room.people}</p>
-                                <p>${room.price}</p>
-                                <button onClick={() => handleReserve(room)} className="btn btn-sm mt-4 btn-primary">Reserve</button>
-                            </div>)
-                        }
-                    </div>
-                </form>
-            </dialog>
+        {/* Modal Room Data  */}
+            <div>
+                {showModal && (
+                    <Modal handleReserve={handleReserve} id={selectedId} onClose={handleCloseModal} />
+                )}
+            </div>
+
+
 
 
             {/* Hotel card  */}
 
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <figure><img src={image} alt="Shoes" /></figure>
+            <div className="card w-96 h-[500px] bg-base-100 shadow-xl">
+                <figure className="h-[280px]"><img className="h-[280px]" src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <p>{details}</p>
                     <div className="card-actions justify-end">
-                        <button onClick={() => window.my_modal_3.showModal(_id)} className="btn btn-primary">Available Room</button>
+
+                        <button className="btn btn-primary" onClick={() => handleOpenModal(_id)}>View Rooms</button>
+
+
                     </div>
                 </div>
             </div>
+
+
+
         </div>
     );
 };
