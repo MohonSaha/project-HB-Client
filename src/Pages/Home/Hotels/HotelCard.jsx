@@ -5,7 +5,7 @@ const HotelCard = ({ hotel }) => {
 
     const { name, image, location, details, _id } = hotel;
 
-    const { data: rooms=[]} = useQuery({
+    const { data: rooms = [] } = useQuery({
         queryKey: ['rooms'],
 
         queryFn: async () => {
@@ -18,13 +18,22 @@ const HotelCard = ({ hotel }) => {
     return (
         <div>
 
-{/* 
+            {/* 
             <button className="btn" onClick={() => window.my_modal_3.showModal()}>open modal</button> */}
             <dialog id="my_modal_3" className="modal">
                 <form method="dialog" className="modal-box">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    <h3 className="font-bold text-lg">{rooms.length}</h3>
-                    <p className="py-4">Press ESC key or click on ✕ button to close</p>
+                    <div className="space-y-10">
+                        {
+                            rooms.map(room => <div key={room._id}>
+                                <h2 className="text-xl font-bold">{room.type}</h2>
+                                <p>{room.roomDetails}</p>
+                                <p>Max People: {room.people}</p>
+                                <p>${room.price}</p>
+                                <button className="btn btn-sm mt-4 btn-primary">Reserve</button>
+                            </div>)
+                        }
+                    </div>
                 </form>
             </dialog>
 
